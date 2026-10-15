@@ -1,8 +1,8 @@
-package MySecondTestAppSpringBoot.service;
+package MySecondTestAppSpringBootLab3.service;
 
 import org.springframework.stereotype.Service;
 import org.springframework.validation.BindingResult;
-import MySecondTestAppSpringBoot.exception.ValidationFailedException;
+import MySecondTestAppSpringBootLab3.exception.ValidationFailedException;
 
 @Service
 public interface ValidationService {

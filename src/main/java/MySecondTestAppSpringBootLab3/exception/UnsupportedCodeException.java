@@ -1,4 +1,4 @@
-package MySecondTestAppSpringBoot.exception;
+package MySecondTestAppSpringBootLab3.exception;
 
 public class UnsupportedCodeException extends Exception {
     public UnsupportedCodeException(String message) { super(message); }
