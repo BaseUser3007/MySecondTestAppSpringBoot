@@ -1,4 +1,4 @@
-package MySecondTestAppSpringBootLab3.model;
+package MyThirdTestAppSpringBoot.model;
 
 import lombok.Builder;
 import lombok.Data;

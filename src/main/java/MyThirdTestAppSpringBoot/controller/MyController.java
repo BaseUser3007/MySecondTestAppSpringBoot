@@ -1,8 +1,8 @@
-package MySecondTestAppSpringBootLab3.controller;
+package MyThirdTestAppSpringBoot.controller;
 
-import MySecondTestAppSpringBootLab3.model.*;
-import MySecondTestAppSpringBootLab3.service.ModifyResponseService;
-import MySecondTestAppSpringBootLab3.util.DateTimeUtil;
+import MyThirdTestAppSpringBoot.model.*;
+import MyThirdTestAppSpringBoot.service.ModifyResponseService;
+import MyThirdTestAppSpringBoot.util.DateTimeUtil;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,9 +13,9 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-import MySecondTestAppSpringBootLab3.exception.UnsupportedCodeException;
-import MySecondTestAppSpringBootLab3.exception.ValidationFailedException;
-import MySecondTestAppSpringBootLab3.service.ValidationService;
+import MyThirdTestAppSpringBoot.exception.UnsupportedCodeException;
+import MyThirdTestAppSpringBoot.exception.ValidationFailedException;
+import MyThirdTestAppSpringBoot.service.ValidationService;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -54,6 +54,9 @@ public class MyController {
 
         try {
             validationService.isValid(bindingResult);
+            Date requestTime = DateTimeUtil.getCustomFormat().parse(request.getSystemTime());
+            long difference = new Date().getTime() - requestTime.getTime();
+            log.info("Время от получения request Сервисом 1 до получения Сервисом 2: {} мс", difference);
             if (request.getUid().equals("123")) {
                 log.error("uid = 123, выбрасывается UnsupportedCodeException");
                 throw new UnsupportedCodeException("uid 123 не поддерживается");

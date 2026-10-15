@@ -1,9 +1,9 @@
-package MySecondTestAppSpringBootLab3.service;
+package MyThirdTestAppSpringBoot.service;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.BindingResult;
-import MySecondTestAppSpringBootLab3.exception.ValidationFailedException;
+import MyThirdTestAppSpringBoot.exception.ValidationFailedException;
 
 @Slf4j
 @Service

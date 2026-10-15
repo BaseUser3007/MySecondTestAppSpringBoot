@@ -1,4 +1,4 @@
-package MySecondTestAppSpringBootLab3.model;
+package MyThirdTestAppSpringBoot.model;
 
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;

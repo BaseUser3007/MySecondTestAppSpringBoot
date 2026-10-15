@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>ru.volokhatyi</groupId>
-	<artifactId>MySecondTestAppSpringBoot</artifactId>
+	<artifactId>MyThirdTestAppSpringBoot</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name/>
 	<description/>
