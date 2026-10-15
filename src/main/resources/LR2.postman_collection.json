@@ -1,0 +1,392 @@
+{
+  "info": {
+    "name": "ЛР2 REST сервис",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "01 Успешный запрос",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"uid\": \"1\",\n  \"operationUid\": \"op-1\",\n  \"systemName\": \"CRM\",\n  \"systemTime\": \"2026-10-16T10:00:00.000Z\",\n  \"source\": \"web\",\n  \"communicationId\": 100,\n  \"templateId\": 1,\n  \"productCode\": 10,\n  \"smsCode\": 1234\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8082/feedback",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8082",
+          "path": [
+            "feedback"
+          ]
+        }
+      }
+    },
+    {
+      "name": "02 Только обязательные поля",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"uid\": \"2\",\n  \"operationUid\": \"op-2\",\n  \"systemTime\": \"2026-10-16T10:00:00.000Z\",\n  \"communicationId\": 1\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8082/feedback",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8082",
+          "path": [
+            "feedback"
+          ]
+        }
+      }
+    },
+    {
+      "name": "03 uid пустой",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"uid\": \"\",\n  \"operationUid\": \"op-1\",\n  \"systemName\": \"CRM\",\n  \"systemTime\": \"2026-10-16T10:00:00.000Z\",\n  \"source\": \"web\",\n  \"communicationId\": 100,\n  \"templateId\": 1,\n  \"productCode\": 10,\n  \"smsCode\": 1234\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8082/feedback",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8082",
+          "path": [
+            "feedback"
+          ]
+        }
+      }
+    },
+    {
+      "name": "04 uid отсутствует",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"operationUid\": \"op-1\",\n  \"systemName\": \"CRM\",\n  \"systemTime\": \"2026-10-16T10:00:00.000Z\",\n  \"source\": \"web\",\n  \"communicationId\": 100,\n  \"templateId\": 1,\n  \"productCode\": 10,\n  \"smsCode\": 1234\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8082/feedback",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8082",
+          "path": [
+            "feedback"
+          ]
+        }
+      }
+    },
+    {
+      "name": "05 uid длиннее 32 символов",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"uid\": \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\n  \"operationUid\": \"op-1\",\n  \"systemName\": \"CRM\",\n  \"systemTime\": \"2026-10-16T10:00:00.000Z\",\n  \"source\": \"web\",\n  \"communicationId\": 100,\n  \"templateId\": 1,\n  \"productCode\": 10,\n  \"smsCode\": 1234\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8082/feedback",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8082",
+          "path": [
+            "feedback"
+          ]
+        }
+      }
+    },
+    {
+      "name": "06 operationUid пустой",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"uid\": \"1\",\n  \"operationUid\": \"\",\n  \"systemName\": \"CRM\",\n  \"systemTime\": \"2026-10-16T10:00:00.000Z\",\n  \"source\": \"web\",\n  \"communicationId\": 100,\n  \"templateId\": 1,\n  \"productCode\": 10,\n  \"smsCode\": 1234\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8082/feedback",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8082",
+          "path": [
+            "feedback"
+          ]
+        }
+      }
+    },
+    {
+      "name": "07 operationUid длиннее 32 символов",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"uid\": \"1\",\n  \"operationUid\": \"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\",\n  \"systemName\": \"CRM\",\n  \"systemTime\": \"2026-10-16T10:00:00.000Z\",\n  \"source\": \"web\",\n  \"communicationId\": 100,\n  \"templateId\": 1,\n  \"productCode\": 10,\n  \"smsCode\": 1234\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8082/feedback",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8082",
+          "path": [
+            "feedback"
+          ]
+        }
+      }
+    },
+    {
+      "name": "08 systemTime отсутствует",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"uid\": \"1\",\n  \"operationUid\": \"op-1\",\n  \"systemName\": \"CRM\",\n  \"source\": \"web\",\n  \"communicationId\": 100,\n  \"templateId\": 1,\n  \"productCode\": 10,\n  \"smsCode\": 1234\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8082/feedback",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8082",
+          "path": [
+            "feedback"
+          ]
+        }
+      }
+    },
+    {
+      "name": "09 communicationId = 0",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"uid\": \"1\",\n  \"operationUid\": \"op-1\",\n  \"systemName\": \"CRM\",\n  \"systemTime\": \"2026-10-16T10:00:00.000Z\",\n  \"source\": \"web\",\n  \"communicationId\": 0,\n  \"templateId\": 1,\n  \"productCode\": 10,\n  \"smsCode\": 1234\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8082/feedback",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8082",
+          "path": [
+            "feedback"
+          ]
+        }
+      }
+    },
+    {
+      "name": "10 communicationId = 100001",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"uid\": \"1\",\n  \"operationUid\": \"op-1\",\n  \"systemName\": \"CRM\",\n  \"systemTime\": \"2026-10-16T10:00:00.000Z\",\n  \"source\": \"web\",\n  \"communicationId\": 100001,\n  \"templateId\": 1,\n  \"productCode\": 10,\n  \"smsCode\": 1234\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8082/feedback",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8082",
+          "path": [
+            "feedback"
+          ]
+        }
+      }
+    },
+    {
+      "name": "11 Все ошибки валидации вместе",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"uid\": \"\",\n  \"operationUid\": \"ccccccccccccccccccccccccccccccccc\",\n  \"communicationId\": 0\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8082/feedback",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8082",
+          "path": [
+            "feedback"
+          ]
+        }
+      }
+    },
+    {
+      "name": "12 uid = 123 (UnsupportedCodeException)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"uid\": \"123\",\n  \"operationUid\": \"op-1\",\n  \"systemName\": \"CRM\",\n  \"systemTime\": \"2026-10-16T10:00:00.000Z\",\n  \"source\": \"web\",\n  \"communicationId\": 100,\n  \"templateId\": 1,\n  \"productCode\": 10,\n  \"smsCode\": 1234\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8082/feedback",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8082",
+          "path": [
+            "feedback"
+          ]
+        }
+      }
+    }
+  ]
+}
