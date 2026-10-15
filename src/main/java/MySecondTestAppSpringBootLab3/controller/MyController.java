@@ -1,6 +1,7 @@
 package MySecondTestAppSpringBootLab3.controller;
 
 import MySecondTestAppSpringBootLab3.model.*;
+import MySecondTestAppSpringBootLab3.service.ModifyRequestService;
 import MySecondTestAppSpringBootLab3.service.ModifyResponseService;
 import MySecondTestAppSpringBootLab3.util.DateTimeUtil;
 import jakarta.validation.Valid;
@@ -26,18 +27,25 @@ public class MyController {
 
     private final ValidationService validationService;
     private final ModifyResponseService modifyResponseService;
+    private final ModifyRequestService modifyRequestService;
+    private final ModifyRequestService modifySourceRequestService;
 
     @Autowired
     public MyController(ValidationService validationService,
-                        @Qualifier("ModifySystemTimeResponseService") ModifyResponseService modifyResponseService) {
+                        @Qualifier("ModifySystemTimeResponseService") ModifyResponseService modifyResponseService,
+                        @Qualifier("ModifySystemNameRequestService") ModifyRequestService modifyRequestService,
+                        @Qualifier("ModifySourceRequestService") ModifyRequestService modifySourceRequestService) {
         this.validationService = validationService;
         this.modifyResponseService = modifyResponseService;
+        this.modifyRequestService = modifyRequestService;
+        this.modifySourceRequestService = modifySourceRequestService;
     }
 
     @PostMapping(value = "/feedback")
     public ResponseEntity<Response> feedback(@Valid @RequestBody Request request,
                                              BindingResult bindingResult) {
 
+        String receivedTime = DateTimeUtil.getCustomFormat().format(new Date());
         log.info("request: {}", request);
 
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
@@ -83,6 +91,13 @@ public class MyController {
 
         modifyResponseService.modify(response);
         log.info("итоговый response: {}", response);
+
+        request.setSystemTime(receivedTime);
+        log.info("в request.systemTime записано время получения запроса Сервисом 1: {}", receivedTime);
+
+        modifySourceRequestService.modify(request);
+
+        modifyRequestService.modify(request);
 
         return new ResponseEntity<>(modifyResponseService.modify(response), HttpStatus.OK);
     }
